@@ -5,7 +5,6 @@ import 'core/helper/dio_helper/dio_helper.dart';
 import 'feature/controllers/auth_cubit/auth_cubit.dart';
 import 'feature/controllers/bloc_observer.dart';
 import 'feature/view/screens/auth_screens/login_screen/login_screen.dart';
-import 'feature/view/screens/auth_screens/register_screen/register_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: RegisterScreen() ),
+        home: LoginScreen() ),
     );
   }
 }

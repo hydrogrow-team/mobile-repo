@@ -33,8 +33,8 @@ Widget defaultFormField(context,{
 
 /// default button
 
-Widget defaultButton(String text,VoidCallback onPressed)=>  Container(
-  width: double.infinity,
+Widget defaultButton(String text,double width,VoidCallback onPressed)=>  Container(
+  width: width,
   height: 50,
   decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(10),

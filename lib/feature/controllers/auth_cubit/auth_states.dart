@@ -4,54 +4,30 @@ class AuthInitialState extends AuthStates {}
 
 class ChangeIconVisibilityState extends AuthStates {}
 
-class LoginLoadingState extends AuthStates {}
+class RegisterContinueStepperState extends AuthStates {}
 
-class LoginSuccessState extends AuthStates {
-  final String message;
+class RegisterCanselStepperState extends AuthStates {}
 
-  LoginSuccessState(this.message);
-}
+class RegisterTapStepperState extends AuthStates {}
 
-class LoginErrorState extends AuthStates {
+class LocationLoadingState extends AuthStates {}
+
+class LocationSuccessState extends AuthStates {}
+
+class LocationErrorState extends AuthStates {
   final String error;
 
-  LoginErrorState(this.error);
+  LocationErrorState(this.error);
 }
 
-class RegisterLoadingState extends AuthStates {}
+class LocationCityLoadingState extends AuthStates {}
 
-class RegisterSuccessState extends AuthStates {
-  final String message;
+class LocationCitySuccessState extends AuthStates {}
 
-  RegisterSuccessState(this.message);
-}
-
-class RegisterErrorState extends AuthStates {
+class LocationCityErrorState extends AuthStates {
   final String error;
 
-  RegisterErrorState(this.error);
+  LocationCityErrorState(this.error);
 }
 
-class UserDataLoadingState extends AuthStates {}
-
-class UserDataSuccessState extends AuthStates {}
-
-class UserDataErrorState extends AuthStates {
-  final String error;
-
-  UserDataErrorState(this.error);
-}
-
-class UpdateUserDataLoadingState extends AuthStates {}
-
-class UpdateUserDataSuccessState extends AuthStates {
-  final String message;
-
-  UpdateUserDataSuccessState(this.message);
-}
-
-class UpdateUserDataErrorState extends AuthStates {
-  final String error;
-
-  UpdateUserDataErrorState(this.error);
-}
+class ShowMapState extends AuthStates {}
