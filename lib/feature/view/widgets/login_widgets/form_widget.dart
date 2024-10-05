@@ -1,7 +1,6 @@
+import 'package:crop_compass/feature/controllers/app_cubit.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/reuable_widgets/reusable_widgets.dart';
-import '../../../controllers/auth_cubit/auth_cubit.dart';
 
 Widget loginForm(
   context, {
@@ -59,10 +58,10 @@ Widget loginForm(
           defaultFormField(context,
               controller: passwordController,
               type: TextInputType.visiblePassword,
-              suffixIcon: AuthCubit.get(context).isVisible
+              suffixIcon: AppCubit.get(context).isVisible
                   ? Icons.visibility
                   : Icons.visibility_off,
-              isSecure: AuthCubit.get(context).isVisible,
+              isSecure: AppCubit.get(context).isVisible,
               validateMessage: 'Password must not be empty',
               prefixIcon: Icons.lock),
           const SizedBox(

@@ -1,5 +1,5 @@
+import 'package:crop_compass/feature/controllers/app_cubit.dart';
 import 'package:flutter/material.dart';
-import '../../feature/controllers/auth_cubit/auth_cubit.dart';
 import '../constants/colors.dart';
 
 /// default form field
@@ -27,7 +27,7 @@ Widget defaultFormField(context,{
         borderRadius: BorderRadius.circular(10),
     ),
     prefixIcon: Icon(prefixIcon,),
-    suffixIcon: suffixIcon != null ?IconButton(onPressed: (){AuthCubit.get(context).changeIconVisibility();}, icon: Icon(suffixIcon,)):null,
+    suffixIcon: suffixIcon != null ?IconButton(onPressed: (){AppCubit.get(context).changeIconVisibility();}, icon: Icon(suffixIcon,)):null,
   ),
 );
 

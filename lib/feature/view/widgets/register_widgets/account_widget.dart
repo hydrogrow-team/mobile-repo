@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/reuable_widgets/reusable_widgets.dart';
-import '../../../controllers/auth_cubit/auth_cubit.dart';
+import '../../../controllers/app_cubit.dart';
 
 Widget accountForm(context,{
   required TextEditingController emailController,
@@ -83,10 +82,10 @@ Widget accountForm(context,{
       defaultFormField(context,
           controller: passwordController,
           type: TextInputType.visiblePassword,
-          suffixIcon: AuthCubit.get(context).isVisible
+          suffixIcon: AppCubit.get(context).isVisible
               ? Icons.visibility
               : Icons.visibility_off,
-          isSecure: AuthCubit.get(context).isVisible,
+          isSecure: AppCubit.get(context).isVisible,
           validateMessage: 'Password must not be empty',
           prefixIcon: Icons.lock),
       const SizedBox(

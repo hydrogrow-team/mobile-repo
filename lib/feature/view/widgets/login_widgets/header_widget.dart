@@ -11,7 +11,7 @@ Widget loginHeader(double width,double height)=>Column(
       style: TextStyle(fontSize: 30, fontFamily: 'fredoka'),
     ),
     const Text(
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      'Your future is coming! Make your farm land ready for increase its productivity!',
       style: TextStyle(color: Colors.black54),
     ),
     const SizedBox(

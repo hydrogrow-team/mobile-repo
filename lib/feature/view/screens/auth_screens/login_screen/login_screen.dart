@@ -1,8 +1,8 @@
 import 'package:crop_compass/core/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../controllers/auth_cubit/auth_cubit.dart';
-import '../../../../controllers/auth_cubit/auth_states.dart';
+import '../../../../controllers/app_cubit.dart';
+import '../../../../controllers/app_states.dart';
 import '../../../widgets/login_widgets/footer_widget.dart';
 import '../../../widgets/login_widgets/form_widget.dart';
 import '../../../widgets/login_widgets/header_widget.dart';
@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthStates>(
+    return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
         double width=MediaQuery.of(context).size.width;
