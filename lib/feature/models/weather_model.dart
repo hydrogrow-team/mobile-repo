@@ -18,6 +18,6 @@ class Days{
 
   factory Days.fromJson(Map<String,dynamic>json){
     double tempVal=(json['temp'] -32)/1.8;
-    return Days(temp: double.parse(tempVal.toStringAsFixed(2)), humidity: json['humidity'].toDouble(), dew: json['dew'].toDouble());
+    return Days(temp: json['temp'].toDouble(), humidity: json['humidity'].toDouble(), dew: json['dew'].toDouble());
   }
 }

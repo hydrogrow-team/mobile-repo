@@ -1,4 +1,5 @@
 import 'package:crop_compass/core/constants/constant.dart';
+import 'package:crop_compass/feature/models/prediction_model.dart';
 import 'package:crop_compass/feature/models/rain_fall.dart';
 import 'package:crop_compass/feature/models/soil_model.dart';
 import 'package:crop_compass/feature/models/weather_model.dart';
@@ -57,6 +58,7 @@ class AppCubit extends Cubit<AppStates> {
       getRainData(lat: value.latitude, lon: value.longitude);
       getWeatherData(lat: value.latitude, lon: value.longitude);
       getSolidData(lat: value.latitude,lon: value.longitude);
+      getPredictionData(lat: value.latitude, lon: value.longitude);
       emit(LocationSuccessState());
     }).catchError((error) {
       if (error ==
@@ -162,6 +164,26 @@ class AppCubit extends Cubit<AppStates> {
     }).catchError((error){
       print(error.toString());
       emit(SolidErrorState(error.toString()));
+    });
+  }
+
+
+  PredictionModel ? predictionModel;
+  void getPredictionData({
+    required double lat,
+    required double lon,
+  }) async{
+    emit(PreLoadingState());
+    final response= await Dio().get(AppConstants.predictionUrl,queryParameters: {
+      "lat":lat,
+      "lon":lon,
+    }).then((value){
+      print(value.data);
+      predictionModel = PredictionModel.fromJson(value.data);
+      emit(PreSuccessState());
+    }).catchError((error){
+      print(error.toString());
+      emit(PreErrorState(error.toString()));
     });
   }
 

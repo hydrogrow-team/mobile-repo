@@ -4,6 +4,7 @@ import 'package:crop_compass/feature/controllers/app_cubit.dart';
 import 'package:crop_compass/feature/view/widgets/home_widgets/animate_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../../controllers/app_states.dart';
 import '../../widgets/home_widgets/charts.dart';
@@ -14,53 +15,156 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit,AppStates>(
-      listener: (context,state){},
-        builder: (context ,state){
-        var cubit=AppCubit.get(context);
-        double width=HelperFunctions.getScreenWidth(context);
-        double height=HelperFunctions.getScreenHeight(context);
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = AppCubit.get(context);
+        double width = HelperFunctions.getScreenWidth(context);
+        double height = HelperFunctions.getScreenHeight(context);
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Dashboard',style: TextStyle(
-              fontFamily: 'fredoka',
-              fontSize: 25
-            ),),
+            title: const Text(
+              'Dashboard',
+              style: TextStyle(fontFamily: 'fredoka', fontSize: 25),
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  itemWidget(context, image: ImagesPath.weather, text: 'Temperature', width: width, height: height, onTap: () {                     cubit.showAnimatedContainer();
-                  },),
-                  animateChart(context, WeatherWidget(model: AppCubit.get(context).weatherModel!, isDew: false, isHum: false,)),
-                  const SizedBox(height: 10,),
-                  itemWidget(context, image: ImagesPath.weather, text: 'Rain Fall', width: width, height: height, onTap: () {
-                    cubit.showAnimatedContainer();
-                  },),
-                  animateChart(context,  RainFallWidget(model: AppCubit.get(context).rainModel!,) ),
-                  itemWidget(context, image: ImagesPath.weather, text: 'Humidity', width: width, height: height, onTap: () {  },),
-                  animateChart(context,  WeatherWidget(model: AppCubit.get(context).weatherModel!, isDew: false,isHum: true,) ),
-                  const SizedBox(height: 10,),
-                  itemWidget(context, image: ImagesPath.weather, text: 'Dew Point', width: width, height: height, onTap: () {  },),
-                  animateChart(context,  WeatherWidget(model: AppCubit.get(context).weatherModel!, isDew: true,isHum: false,) ),
-                  const SizedBox(height: 10,),
+                  itemWidget(
+                    context,
+                    image: ImagesPath.weather,
+                    text: 'Temperature',
+                    width: width,
+                    height: height,
+                    onTap: () {
+                      cubit.showAnimatedContainer();
+                    },
+                  ),
+                  animateChart(
+                      context,
+                      WeatherWidget(
+                        model: AppCubit.get(context).weatherModel!,
+                        isDew: false,
+                        isHum: false,
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  itemWidget(
+                    context,
+                    image: ImagesPath.weather,
+                    text: 'Rain Fall',
+                    width: width,
+                    height: height,
+                    onTap: () {
+                      cubit.showAnimatedContainer();
+                    },
+                  ),
+                  animateChart(
+                      context,
+                      RainFallWidget(
+                        model: AppCubit.get(context).rainModel!,
+                      )),
+                  itemWidget(
+                    context,
+                    image: ImagesPath.weather,
+                    text: 'Humidity',
+                    width: width,
+                    height: height,
+                    onTap: () {},
+                  ),
+                  animateChart(
+                      context,
+                      WeatherWidget(
+                        model: AppCubit.get(context).weatherModel!,
+                        isDew: false,
+                        isHum: true,
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  itemWidget(
+                    context,
+                    image: ImagesPath.weather,
+                    text: 'Dew Point',
+                    width: width,
+                    height: height,
+                    onTap: () {},
+                  ),
+                  animateChart(
+                      context,
+                      WeatherWidget(
+                        model: AppCubit.get(context).weatherModel!,
+                        isDew: true,
+                        isHum: false,
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   itemWidget(
                     context,
                     isN: true,
-                    image: ImagesPath.weather, text: 'Nitrogen % = ${cubit.soilModel!.nMean}', width: width, height: height, onTap: () {  },),
-                  const SizedBox(height: 10,),
+                    image: ImagesPath.weather,
+                    text: 'Nitrogen % = ${cubit.soilModel!.nMean}',
+                    width: width,
+                    height: height,
+                    onTap: () {},
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   itemWidget(
                     context,
                     isN: true,
-                    image: ImagesPath.weather, text: 'PH = ${cubit.soilModel!.phMean}', width: width, height: height, onTap: () {  },),
+                    image: ImagesPath.weather,
+                    text: 'PH = ${cubit.soilModel!.phMean}',
+                    width: width,
+                    height: height,
+                    onTap: () {},
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 70,
+                    child: Card(
+                      elevation: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Recommended',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium!
+                                  .copyWith(fontFamily: 'fredoka'),
+                            ),
+                            Text(
+                              'Tomato',
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontFamily: 'fredoka',
+                                  fontSize: 20),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
 
                 ],
               ),
             ),
           ),
         );
-        }, );
+      },
+    );
   }
 }

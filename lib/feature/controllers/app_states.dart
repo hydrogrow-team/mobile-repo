@@ -65,3 +65,13 @@ class SolidErrorState extends AppStates {
 
   SolidErrorState(this.error);
 }
+
+class PreLoadingState extends AppStates {}
+
+class PreSuccessState extends AppStates {}
+
+class PreErrorState extends AppStates {
+  final String error;
+
+  PreErrorState(this.error);
+}
